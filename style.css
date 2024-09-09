@@ -1,0 +1,372 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Full-Screen Banner */
+.banner-fullscreen {
+  position: fixed;
+  top: 2%;
+  bottom: 2%;
+  left: 2%;
+  right: 2%;
+  border-radius: 25px;
+  /* width: 100vw; */
+  height: 100vh;
+  background: url("/Authentication/assests/banner.jpg") no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: hideBanner 1s ease-in forwards;
+}
+
+@keyframes hideBanner {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.logo-animation img {
+  border-radius: 50%;
+}
+.logo-animation {
+  position: absolute;
+  width: 100px;
+  animation: logoMove 2s ease-out forwards 3s;
+}
+
+@keyframes logoMove {
+  0% {
+    transform: translate(0, 50%);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%);
+    top: 20px;
+    left: 20px;
+    position: fixed;
+  }
+}
+
+/* Main Layout */
+.auth-page {
+  display: flex;
+  height: 100vh;
+  visibility: hidden;
+  animation: showPage 6s forwards;
+}
+
+@keyframes showPage {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.container {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* .banner {
+  width: 40%;
+} */
+
+.banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 25px;
+  margin-top: 2%;
+  margin-right: 2%;
+  margin-bottom: 2%;
+}
+
+/* Navigation Styling */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+/* Text Animation */
+.text-animation {
+  opacity: 0;
+  animation: textAppear 2s ease-out forwards 3s;
+  position: absolute;
+  left: 0px;
+  top: 40px;
+  font-size: 20px;
+  z-index: 10;
+}
+
+@keyframes textAppear {
+  0% {
+    opacity: 1;
+    left: 120px;
+  }
+  100% {
+    opacity: 1;
+    left: 180px;
+  }
+}
+
+.enrollment-info {
+  text-align: right;
+  display: flex;
+  flex-direction: row;
+}
+
+.enroll-button {
+  margin-top: 10px;
+  padding: 1em 2em;
+  background-color: transparent;
+  color: #538a30;
+  border-radius: 10em;
+  cursor: default;
+  position: relative;
+  border: 1px solid #d3d3d3;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 0 0 0 #d3d3d3;
+  transition: background-color 0.3s ease;
+}
+
+/* .enrollment-info .enroll-button:hover {
+  background-color: #0056b3;
+} */
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.enroll {
+  /* display: none; 
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #000000;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+  text-align: left;
+  visibility: hidden;
+  width: 300px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 100%;
+  margin-left: -60px;
+}
+.enroll ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.enrollment-info:hover .enroll {
+  display: block;
+  visibility: visible;
+}
+
+.tooltip .enroll::after {
+  content: " ";
+  position: absolute;
+  top: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+/* Form Styling */
+.auth-form {
+  /* display: flex;
+  flex-direction: column;
+  row-gap: 14px;
+  margin-top: 40px; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: rgba(24, 20, 20, 0.987);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+}
+
+.auth-form h1 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  color: #000000;
+}
+
+.auth-form .sign {
+  margin-bottom: 20px;
+  color: #555555;
+}
+
+.auth-form .form-group {
+  /* display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin-bottom: 15px; */
+  position: relative;
+}
+
+.auth-form label {
+  /* top: 0;
+  left: 0;
+  padding: 10px 0;
+  pointer-events: none;
+  transition: 0.5s;
+  border: 1px solid rgb(219, 219, 219);
+  display: flex;
+  align-items: center;
+  position: absolute;
+  min-width: 268px;
+  height: 38px;
+  background: rgb(250, 250, 250);
+  border-radius: 3px; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  /* width: 100%;
+  background: inherit;
+  border: 0;
+  outline: none;
+  padding: 10px 0;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  vertical-align: middle; */
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 30px;
+  border: none;
+  border-bottom: 1px solid #fff;
+  outline: none;
+  background: transparent;
+}
+
+.auth-form .form-group input:focus ~ label,
+.auth-form .form-group input:valid ~ label {
+  top: -20px;
+  left: 0;
+  color: #bdb8b8;
+  font-size: 12px;
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.form-group button {
+  width: 100%;
+  padding: 10px;
+  background-color: #538a30;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-group button:hover {
+  background-color: #0056b3;
+}
+
+.forgot-links {
+  margin-top: 15px;
+}
+
+.forgot-link {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+/* Footer Styling */
+.footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+  text-align: center;
+}
+
+.footer a {
+  display: block;
+  color: #555;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.footer p {
+  color: #555;
+  margin-top: 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
