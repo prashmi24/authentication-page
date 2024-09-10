@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Basic form validation
   const loginForm = document.querySelector(".auth-form");
   loginForm.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission for validation
+    event.preventDefault();
 
     // Get form values
     const onlineId = document.getElementById("online-id").value.trim();
